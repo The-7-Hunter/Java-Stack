@@ -16,9 +16,10 @@ public class DemoApplication {
 	}	
 	
 	@RequestMapping("/")
-	public String index(@RequestParam(value = "q", required = false) String searchQuery) {
-		return "You searched for: " + searchQuery;
+	public String index(@RequestParam(value = "first", required = false, defaultValue = "Human") String searchQuery, @RequestParam(value = "last", required = false, defaultValue = "Human") String searchQuery1) {
+		return "Name: " + searchQuery + searchQuery1;
 	}
+	
 	
     @RequestMapping("/m/{track}/{module}/{lesson}")
     public String showLesson(@PathVariable("track") String track, @PathVariable("module") String module, @PathVariable("lesson") String lesson){
