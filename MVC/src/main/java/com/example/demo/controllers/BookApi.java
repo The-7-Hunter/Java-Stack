@@ -60,6 +60,7 @@ public class BookApi {
 			@RequestParam(value = "pages") Integer numOfPages) {
 
 		Book book = bookService.updateBook(id, title, desc, lang, numOfPages);
+		book = bookService.updateBook(book);
 
 		return book;
 

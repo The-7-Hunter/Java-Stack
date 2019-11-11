@@ -53,7 +53,8 @@ public class BookService {
         }
 
     }
-    public Book ubdateBook(Book book) {
+    
+    public Book updateBook(Book book) {
     	return bookRepository.save(book);
     }
    
