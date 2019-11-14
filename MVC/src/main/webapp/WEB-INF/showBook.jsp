@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
 	<h2>
 		<a href="/books/all"> Back </a>
 	</h2>
-	
+
 	<h1>Title:</h1>
 	<p>
 		<c:out value="${book.title}" />
@@ -29,7 +30,14 @@
 	<p>
 		<c:out value="${book.numberOfPages}" />
 	</p>
-	<a href="/books/${book.id}/edit"> Edit </a>
+	<a href="/books/${book.id}/edit"> Edit </a> --------
+
+	<form:form action="/books/${book.id}/delete" method="post"
+		modelAttribute="book">
+
+		<input type="submit" value="Delete" />
+
+	</form:form>
 
 
 </body>
