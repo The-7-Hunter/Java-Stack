@@ -22,35 +22,39 @@ public class BookController {
         public BookController(BookService bookService) {
             this.bookService = bookService;
         }
-
+        
+        // Display all books 
         @RequestMapping("/books/all")
         public String index(Model model) {
             List<Book> books = bookService.allBooks();
             model.addAttribute("books", books);
             return "index.jsp";
         }
-
+        
+        // display form page for adding new book
         @RequestMapping("/books/new")
         public String newBook(@ModelAttribute("book") Book book) {
-            return "new.jsp";
+            return "newBookForm.jsp";
         }
-
+        
+        // post request for adding new book
         @RequestMapping(value="/books", method= RequestMethod.POST)
         public String create(@Valid @ModelAttribute("book") Book book, BindingResult result) {
             if (result.hasErrors()) {
-                return "new.jsp";
+                return "newBookForm.jsp";
             }
             else {
                 bookService.createBook(book);
-                return "redirect:/books";
+                return "redirect:/books/all";
             }
         }
-
-        @RequestMapping("/show/{id}")
+        
+        // display specific book by its id
+        @RequestMapping("/books/{id}")
         public String show(@PathVariable("id") Long id, Model model) {
             Book book = bookService.findBook(id);
             model.addAttribute("book", book);
-            return "show.jsp";
+            return "showBook.jsp";
         }
 
         @RequestMapping("/books/{id}/edit")
