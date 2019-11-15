@@ -33,4 +33,17 @@ public class shows_services {
 			return null;
 		}
 	}
+	   public shows updateShow(long id, String name, String network, Integer average_rating) {
+			Optional <shows> showToEdit = shows_repo.findById(id);
+			if(showToEdit != null) {
+				showToEdit.get().setName(name);
+				showToEdit.get().setNetwork(network);
+				
+				return showToEdit.get();
+			}
+			return null;
+		}
+	   public shows updateShow(shows show) {
+	    	return shows_repo.save(show);
+	    }
 }
