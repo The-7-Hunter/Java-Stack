@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +24,16 @@
 		<c:out value="${show.average_rate}" />
 	</p>
 
-	<a href="/shows/${show.id}/edit"> Edit Show </a>
+	<a href="/shows/${show.id}/edit"> <input type="submit"
+		value="Edit Show" />
+	</a>
 	<p></p>
-	<a href="/shows/${show.id}/delete"> Delete Show </a>
+	<form:form action="/shows/${show.id}/delete" method="post"
+		modelAttribute="show">
+
+		<input type="submit" value="Delete Show" />
+
+	</form:form>
 
 
 </body>

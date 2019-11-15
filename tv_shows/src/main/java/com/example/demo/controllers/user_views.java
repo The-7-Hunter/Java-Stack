@@ -49,7 +49,7 @@ public class user_views {
 		return "editShow.jsp";
 	}
 
-	@RequestMapping("editshow")
+	@RequestMapping(value="/editshow", method=RequestMethod.POST)
 	public String edit(@Valid @ModelAttribute("show") shows show, BindingResult result) {
 		if (result.hasErrors()) {
 			return "editShow.jsp";
@@ -64,7 +64,7 @@ public class user_views {
 		return "newShow.jsp";
 	}
 
-	@RequestMapping(value = "newshow", method = RequestMethod.POST)
+	@RequestMapping(value = "/newshow", method = RequestMethod.POST)
 	public String create(@Valid @ModelAttribute("show") shows show, BindingResult result) {
 		if (result.hasErrors()) {
 			return "newShow.jsp";
@@ -73,4 +73,10 @@ public class user_views {
 			return "redirect:/shows";
 		}
 	}
+	
+    @RequestMapping(value="/shows/{id}/delete", method=RequestMethod.POST)
+    public String destroy(@PathVariable("id") Long id) {
+        shows_serve.deleteShow(id);
+        return "redirect:/shows";
+    }
 }

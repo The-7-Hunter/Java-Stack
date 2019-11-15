@@ -11,8 +11,7 @@
 </head>
 <body>
 	<h1>Edit ${show.name}</h1>
-	<form:form action="/shows/${show.id}" method="post"
-		modelAttribute="show">
+	<form:form action="/editshow" method="post" modelAttribute="show">
 
 
 		<%--- <input type="hidden" name="_method" value="put"> --%>
@@ -35,6 +34,13 @@
 			<form:textarea path="network" />
 
 		</p>
+
+		<p>
+
+			<form:hidden  path="id" />
+
+		</p>
+
 
 
 		<input type="submit" value="Submit" />
