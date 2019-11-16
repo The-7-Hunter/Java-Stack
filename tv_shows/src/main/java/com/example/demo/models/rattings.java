@@ -61,4 +61,7 @@ public class rattings {
 		this.show = show;
 	}
 
+	public rattings() {
+	}
+
 }

@@ -24,6 +24,10 @@
 		<c:out value="${show.average_rate}" />
 	</p>
 
+	<p>
+		Average Rating:
+		<c:out value="${size}" />
+	</p>
 	<a href="/shows/${show.id}/edit"> <input type="submit"
 		value="Edit Show" />
 	</a>
@@ -32,6 +36,39 @@
 		modelAttribute="show">
 
 		<input type="submit" value="Delete Show" />
+
+	</form:form>
+
+	<h1>Ratings</h1>
+	<c:forEach items="${rattings}" var="rate">
+
+		<p>
+			<c:out value="${rate.ratter}" />
+		</p>
+		<p>
+			<c:out value="${rate.rate_value}" />
+		</p>
+		<p>
+			<c:out value="${show.id}" />
+		</p>
+
+	</c:forEach>
+
+	<h1>Add rate</h1>
+	<form:form action="/newrate" method="post" modelAttribute="rate">
+		<p>
+			<form:label path="ratter">name</form:label>
+			<form:errors path="ratter" />
+			<form:input path="ratter" />
+		</p>
+		<p>
+			<form:label path="rate_value">Rating Value</form:label>
+			<form:errors path="rate_value" />
+			<form:input type="number" path="rate_value" />
+		</p>
+
+		<form:hidden path="show" value="${show.id}" />
+		<input type="submit" value="Add Rate" />
 
 	</form:form>
 
