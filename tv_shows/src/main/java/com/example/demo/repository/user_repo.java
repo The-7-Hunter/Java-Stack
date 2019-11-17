@@ -1,4 +1,5 @@
 package com.example.demo.repository;
+
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,5 +11,5 @@ import com.example.demo.models.user;
 public interface user_repo extends CrudRepository<user, Long>{
 	
 		List<user> findAll();
+		user findByEmail(String email);
 }
-
