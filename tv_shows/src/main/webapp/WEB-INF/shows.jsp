@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+    <a href="/logout"> Logout </a>
+
+<h1>Welcome, ${username}</h1>
 	<h1>all shows are here</h1>
 	
 	    <c:forEach items="${shows}" var="show">

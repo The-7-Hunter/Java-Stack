@@ -76,14 +76,14 @@
 
         </form:form>
 
-        <form:errors cssClass="red" path="userObj.*"/>
+        <form:errors cssClass="red" path="userObj"/>
 
     </div>
 
     <div id="rightpanel">
 
         <h1>Login</h1>
-
+		<p> <c:out value="${error}"/></p>
         <form action="/login" method="post">
 
             <h4>Email:<input class="fields" type="email" name="email"></h4>
@@ -91,7 +91,8 @@
             <h4>Password:<input class="fields" type="password" name="password"></h4>
 
             <input class="btn" type="submit" value="Login">
-
+			
+			
         </form>
 
     </div>
